@@ -124,6 +124,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+
 CORS_ALLOW_ALL_ORIGINS = True 
 
 REST_FRAMEWORK = {
