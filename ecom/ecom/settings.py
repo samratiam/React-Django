@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken', #for custom signup
     'api',
+    # 'api.product'
     # 'api.category'
 ]
 
