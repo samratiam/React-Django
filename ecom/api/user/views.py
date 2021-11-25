@@ -1,6 +1,7 @@
 from django.contrib.auth.backends import UserModel
 from django.contrib.auth.models import User
 from rest_framework import viewsets
+from rest_framework.decorators import permission_classes
 from rest_framework.permissions import AllowAny 
 from .serializers import UserSerialzer
 from .models import CustomUser
@@ -70,3 +71,17 @@ def signout(request, id):
         return JsonResponse({'error': 'Invalid user ID'})
     
     return JsonResponse({'success': 'Logout success'})
+
+class UserViewSet(viewsets.ModelViewSet):
+    #standardization you can follow this guideliness for future project
+    permission_classes_by_action = {'create': [AllowAny]}
+
+    queryset = CustomUser.objects.all().order_by('id')
+    serializer_class = UserSerialzer
+
+    def get_permissions(self):
+        try:
+            return [permission() for permission in self.permission_classes_by_action[self.action]]
+        except KeyError:
+            return [permission() for permission in self.permission_classes]
+            
