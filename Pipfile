@@ -7,6 +7,8 @@ name = "pypi"
 django-cors-headers = "*"
 djangorestframework = "*"
 pillow = "*"
+braintree = "*"
+django = "==3.0.8"
 
 [dev-packages]
 
